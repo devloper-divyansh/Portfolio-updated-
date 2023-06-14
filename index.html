@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tab System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        .header {
+            text-align: center;
+        }
+
+        .greeting {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        #greet {
+            border: 3px dashed black;
+            border-radius: 5px;
+            font-size: 30px;
+            margin-top: 40px;
+            color: black;
+            background-color: white;
+            transition: 0.6s;
+        }
+
+        #greet:hover {
+            border: 2px solid blue;
+            font-size: 45px;
+            margin-top: 55px;
+            background-color: black;
+            color: white;
+        }
+
+        #name {
+            border-radius: 5px;
+            font-weight: bold;
+            width: 300px;
+            padding: 12px;
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        /* font injection*/
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        #typewriter {
+            font-family: monospace;
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: orange;
+            }
+        }
+
+        .about-text-details {
+            float: right;
+            margin-right: 550px;
+            font-size: 45px;
+            margin-top: 100px;
+        }
+
+        .img1 {
+            margin-left: 100px;
+            margin-top: 100px;
+        }
+
+        .Mobile-devloper {
+            border: 5px solid blue;
+            border-radius: 7px;
+            margin-top: 200px;
+        }
+
+        .mobile-devloper-header {
+            text-align: center;
+            font-size: 65px;
+            font-weight: 800;
+        }
+
+        .Mobile-devloper {
+            font-weight: 600;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            height: 400px;
+            width: 1900px;
+            border: 5px solid blue;
+            border-radius: 7px;
+        }
+
+        .Web-devloper {
+            font-weight: 600;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            height: 400px;
+            width: 1900px;
+            border: 5px solid blue;
+            border-radius: 7px;
+        }
+
+        .Electron-devloper {
+            font-weight: 600;
+            font-size: 20px;
+            text-align: center;
+            text-decoration: none;
+            height: 400px;
+            width: 1900px;
+            border: 5px solid blue;
+            border-radius: 7px;
+        }
+
+        .Web-devloper-header {
+            text-align: center;
+            font-size: 65px;
+            font-weight: 800;
+        }
+
+        .electron-devloper-header {
+            text-align: center;
+            font-size: 65px;
+            font-weight: 800;
+        }
+
+        .web-developer {
+            text-align: center;
+            width: 500px;
+            height: 300px;
+            border: 2px solid black;
+            transition: 0.6s;
+            text-decoration: none;
+            font-size: 50px;
+            border-radius: 5px;
+            align-self: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .web-developer:hover {
+            background-color: green;
+            color: white;
+        }
+
+        .app-developer {
+            text-align: center;
+            width: 500px;
+            height: 300px;
+            border: 2px solid black;
+            transition: 0.6s;
+            text-decoration: none;
+            font-size: 50px;
+            border-radius: 5px;
+            align-self: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .app-developer:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        .tabs {
+            width: 100%;
+        }
+
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #eee;
+            border: none;
+            border-bottom: 2px solid #ddd;
+            cursor: pointer;
+        }
+
+        .tab:hover {
+            background-color: #ddd;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid #000;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .tab-content h3 {
+            margin-top: 0;
+        }
+
+        .tab-content p {
+            margin-bottom: 0;
+        }
+
+        .tab-content.show {
+            display: block;
+        }
+
+        .video1 {
+            margin-top: 150px;
+            margin-right: 500px;
+        }
+
+        body{
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tabs">
+        <button class="tab active" onclick="openTab(event, 'tab1')">Home</button>
+        <button class="tab" onclick="openTab(event, 'tab2')">Contact & Services</button>
+        <button class="tab" onclick="openTab(event, 'tab3')">Projects</button>
+        <button class="tab" onclick="openTab(event, 'tab4')">About</button>
+
+        <div id="tab1" class="tab-content">
+            <div class="header">
+                <h1 class="header-text">Hi!</h1>
+                <h1 class="name">My name is, Divyansh Maurya</h1>
+                <h2 id="typewriter"></h2>
+            </div>
+
+            <div class="greeting">
+                Let's Greet you: <br />
+                <input type="text" id="name" placeholder="Please enter your name" /><br />
+                <button onclick="Greet()" id="greet">Greet</button>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="header">
+                <h1 class="header">Contact</h1>
+                <h2>Email - <a href="mailto:githubdivyansh@gmail.com" target="_blank">githubdivyansh@gmail.com</a></h2>
+                <br /><br /><br />
+                <a href="https://www.fiverr.com/" target="_blank"><img src="./fiverr-logo.png" height="40" /></a>
+                <br /><br /><br /><br /><br />
+                <h1 class="services-header">
+                    Services
+                </h1>
+                <a href="https://www.fiverr.com/" target="_blank">
+                    <center>
+                        <div class="app-developer">
+                            App development
+                        </div>
+
+                        <div class="web-developer">
+                            Web development
+                        </div>
+                    </center>
+                </a>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="header">
+                <h1 class="header">Projects</h1>
+                <h2>All the mini projects will be uploaded here</h2>
+                <br /><br /><br />
+                <h1>A login form</h1>
+                <iframe src="C:\Users\divya\OneDrive\Documents\Coding projects\HTML\Project_1\login-project\index.html"
+                    width="1800" height="900"></iframe><br /><br />
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="header">
+                <h1 class="header">About Me</h1>
+                <img src="./my-pic.png" height="600" width="400" align="left" class="img1" />
+                <div class="about-text-details">
+                    Name - Divyansh Maurya<br /><br />
+                    Date of Birth - 8 July 2011<br /><br />
+                    Adress - Chinhat, Lucknow<br /><br />
+                    Work - freelancer, Avalable on fiverr<br /><br /><br />
+                </div>
+            </div>
+
+            <div class="video-coding">
+                <video muted autoplay loop class="video1">
+                    <source src="./coding.mp4">
+                </video>
+            </div>
+            <div class="video-coding-2">
+                <video height="250px" muted autoplay loop style="margin-left: 940px;">
+                    <source src="./video2.mp4">
+                </video>
+            </div>
+
+            <div class="Experience">
+                <!-- <div class="header-ex">
+                    Experience
+                </div> -->
+                <div class="Mobile-devloper">
+                    <div class="mobile-devloper-header">
+                        Mobile-devloper<br/><br/>
+                    </div>
+
+                    I use React native to build mobile apps for<br/>
+                    Android and IOS, I have 3 years of mobile <br/>
+                    development Experience.
+                </div>
+                <div class="Web-devloper">
+                    <div class="Web-devloper-header">
+                        Web-devloper<br /><br />
+                    </div>
+                    I use Pure HTML, CSS and Javascript <br /> to build Websites for<br />
+                    all the browsers, I have 5 years of Web <br />
+                    development Experience. You can also see a demo of my web <br />
+                    development skill in this web only as this web is designed by me <br />
+                    which is fully coded
+                </div>
+                <div class="Electron-devloper">
+                    <div class="electron-devloper-header">
+                        Electron-devloper<br /><br />
+                    </div>
+                    I use Javascript electron framework <br /> to build desktop apps for<br />
+                    Window and Linux I have 4 years of electron <br />
+                    development Experience.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(event, tabName) {
+            var i, tabContent, tabButtons;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            tabButtons = document.getElementsByClassName("tab");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        // Set the first tab as active by default
+        document.getElementsByClassName("tab")[0].click();
+
+        const text = "I am a Web and App devloper"; // The text you want to display with typing effect
+        let charIndex = 0;
+        const typingElement = document.getElementById("typewriter");
+
+        function type() {
+            if (charIndex < text.length) {
+                typingElement.innerHTML += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100); // Adjust the typing speed here (in milliseconds)
+            }
+        }
+
+        type();
+
+        function Greet() {
+            const name = document.getElementById('name').value;
+            if (name == "") {
+                alert("Please enter your name");
+            }
+            else if (name == name) {
+                alert('welcome ' + name);
+            }
+        }
+    </script>
+</body>
+
+</html>
