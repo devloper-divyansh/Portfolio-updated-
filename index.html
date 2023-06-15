@@ -241,6 +241,34 @@
         body{
             font-family: 'Roboto', sans-serif;
         }
+
+        .animated-skills-header{
+            animation: rgb-color 3s infinite;
+        }
+
+        @keyframes rgb-color {
+            0%{
+                color: red;
+            }
+            15%{
+                color: lightcoral;
+            }
+            45%{
+                color: green;
+            }
+            55%{
+                color: lightgreen;
+            }
+            78%{
+                color: aqua;
+            }
+            89%{
+                color: aquamarine;
+            }
+            100%{
+                color: red;
+            }
+        }
     </style>
 </head>
 
@@ -357,9 +385,9 @@
 
                 <div class="Skills">
                     <h1 class="skills-header" style="text-align: center; margin-top: 35px; font-size: 75px; font-weight: 700;">
-                        Skills
+                        Skills<br/><br/>
                     </h1>
-                    <font size='20px'>
+                    <font size='20px' class="animated-skills-header">
                         HTML 5: 92%<br/><br/>
                         CSS 3: 89%<br/><br/>
                         Javascript: 35%<br/><br/>
